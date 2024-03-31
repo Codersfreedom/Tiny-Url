@@ -2,9 +2,12 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 
 const useCreateUrl = (url, slug) => {
-  const [alias, setAlias] = useState("");
+  const [alias, setAlias] = useState(null);
+  const [isloading,setisLoading] = useState(false);
 
   const createUrl = async () => {
+    setisLoading(true);
+    if(isloading) return;
     try {
       const response = await fetch( import.meta.env.VITE_BASE_URL+'/createUrl', {
         method: "POST",
@@ -23,9 +26,11 @@ const useCreateUrl = (url, slug) => {
     } catch (error) {
       console.log(error);
       toast.error(error.message);
+    }finally{
+        setisLoading(false);
     }
   };
-  return { alias, createUrl };
+  return { isloading, alias, createUrl };
 };
 
 export default useCreateUrl;
