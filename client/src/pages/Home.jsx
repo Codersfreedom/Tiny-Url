@@ -7,7 +7,11 @@ const Home = () => {
   const [url,setUrl] = useState('');
   const [slug,setSlug] = useState('');
 
-  const {link,createUrl} = useCreateUrl(url,slug);
+  const {alias,createUrl} = useCreateUrl(url,slug);
+  let createdUrl;
+  if(alias){
+  createdUrl = `${import.meta.env.VITE_BASE_URL}/${alias}`
+  }
 
   return (
     <Flex alignItems={"center"} justifyContent={"center"} height={"100vh"} width={"100vw"}>
@@ -26,7 +30,7 @@ const Home = () => {
           width={"100%"}
           justifyContent={"center"}
           position={"relative"} >
-          <Input variant={"flushed"} readOnly value={link||''} />
+          <Input variant={"flushed"} readOnly value={createdUrl||''} />
           <Button
             position={"absolute"}
             right={0}
