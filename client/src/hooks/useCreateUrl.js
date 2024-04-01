@@ -6,6 +6,7 @@ const useCreateUrl = (url, slug) => {
   const [isloading,setisLoading] = useState(false);
 
   const createUrl = async () => {
+    if(!url) return toast.error("Please enter a url");
     setisLoading(true);
     if(isloading) return;
     try {
