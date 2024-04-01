@@ -9,7 +9,7 @@ const useCreateUrl = (url, slug) => {
     setisLoading(true);
     if(isloading) return;
     try {
-      const response = await fetch( import.meta.env.VITE_BASE_URL+'/createUrl', {
+      const response = await fetch( '/createUrl', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
