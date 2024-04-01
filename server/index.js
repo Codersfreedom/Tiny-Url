@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import path, { dirname } from "path";
+import path from "path";
 
 import connectDB from "./db.js";
 import UrlRoutes from "./routes/UrlRoutes.js";
